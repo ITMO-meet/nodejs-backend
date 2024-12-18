@@ -6,21 +6,15 @@ const bodyParser = require('body-parser')
 const app = express();
 const PORT = 3000;
 
-// Настройки CORS для фронтенда
 app.use(cors({ origin: 'http://185.178.47.42' }));
-
-// Парсинг JSON-запросов
 app.use(bodyParser.json());
 app.use(morgan('dev'))
 
-// Базовый URL бекенда
 const BACKEND_BASE_URL = 'http://185.178.47.42:8000';
 
-// Прокси для маршрута авторизации
 app.post('/api/auth/login', async (req, res) => {
     const { username, password } = req.body;
 
-    // Логирование входящего запроса
     console.log('POST /api/auth/login');
     console.log('Request body:', req.body);
 
@@ -29,7 +23,6 @@ app.post('/api/auth/login', async (req, res) => {
             params: { username, password },
         });
 
-        // Логирование ответа от бекенда
         console.log('Backend response:', response.data);
 
         res.status(response.status).json(response.data);
