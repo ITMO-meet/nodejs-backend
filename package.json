@@ -1,0 +1,25 @@
+{
+  "name": "auth-nodejs-backend",
+  "version": "0.0.1",
+  "description": "Nodejs backend proxy for ITMO meet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "OverFitter",
+  "license": "ISC",
+  "dependencies": {
+    "auth-nodejs-backend": "file:",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
