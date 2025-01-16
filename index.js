@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'))
 
-const BACKEND_BASE_URL = 'http://185.178.47.42:8000/api';
+const BACKEND_BASE_URL = 'http://python-backend:8000/api';
 
 // Обработчик для всех запросов, начинающихся с /auth/
 app.post('/auth/*', async (req, res) => {
