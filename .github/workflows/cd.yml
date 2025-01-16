@@ -57,4 +57,4 @@ jobs:
             docker pull archont/nodejs-backend:latest
             docker stop nodejs-backend || true
             docker rm nodejs-backend || true
-            docker run -d --name nodejs-backend -p 3000:3000 archont/nodejs-backend:latest
+            docker run -d --name nodejs-backend --network itmomeet-network -p 3000:3000 archont/nodejs-backend:latest
