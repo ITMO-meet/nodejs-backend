@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-const BACKEND_BASE_URL = 'http://python-backend:8000/api';
+const BACKEND_BASE_URL = 'http://python-backend:8000';
 
 // Handler for all requests starting with /auth/
 app.post('/auth/*', async (req, res) => {
