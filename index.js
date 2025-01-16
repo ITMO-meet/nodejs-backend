@@ -1,26 +1,33 @@
+// Updated Express App Code
 const express = require('express');
 const axios = require('axios');
 const morgan = require('morgan');
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 
 const BACKEND_BASE_URL = 'http://python-backend:8000/api';
 
-// Обработчик для всех запросов, начинающихся с /auth/
+// Handler for all requests starting with /auth/
 app.post('/auth/*', async (req, res) => {
-    const endpoint = req.originalUrl; // Получаем полный URL запроса
+    const endpoint = req.originalUrl; // Get the full request URL
     console.log(`POST ${endpoint}`);
     console.log('Request body:', req.body);
 
     try {
-        const response = await axios.post(`${BACKEND_BASE_URL}${endpoint}`, req.body);
+        const response = await axios.post(`${BACKEND_BASE_URL}${endpoint}`, req.body, {
+            headers: {
+                'Host': 'itmomeet.ru',
+                'X-Forwarded-Host': req.headers.host,
+                'X-Forwarded-Proto': req.protocol
+            }
+        });
         console.log('Backend response:', response.data);
         res.status(response.status).json(response.data);
     } catch (error) {
